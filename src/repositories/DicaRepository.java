@@ -1,9 +1,8 @@
 package repositories;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import entities.Dica;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import validators.ValidadorDica;
 
 /**
@@ -13,13 +12,13 @@ import validators.ValidadorDica;
 
 public class DicaRepository {
 
-	private List<Dica> dicas;
+	private Deque<Dica> dicas;
 	
 	/**
      * Cria um novo repositório de dicas.
      */
 	public DicaRepository() {
-		this.dicas = new ArrayList<>();
+		this.dicas = new ArrayDeque<>();
 	}
 	
 	/**
@@ -99,6 +98,6 @@ public class DicaRepository {
      */
 	public Dica buscaDica(int posicao) {
 		ValidadorDica.validaPosicao(posicao, this.dicas.size());
-		return this.dicas.get(posicao - 1);
-	}
+		return (Dica) dicas.toArray()[posicao - 1];  // Utilizando toArray() para acessar a dica na posição
+    }
 }
