@@ -12,7 +12,7 @@ import validators.ValidadorDica;
 
 public class DicaRepository {
 
-	private Deque<Dica> dicas;
+	private final Deque<Dica> dicas;
 	
 	/**
      * Cria um novo repositório de dicas.
@@ -39,7 +39,7 @@ public class DicaRepository {
      * @return um array de strings representando as dicas
      */
 	public String[] listaDicas() {
-		if (this.dicas.size() == 0) {
+		if (this.dicas.isEmpty()) {
 			return new String[0];
 		}
 		String[] lista = new String[this.dicas.size()];
@@ -56,7 +56,7 @@ public class DicaRepository {
      * @return um array de strings com os detalhes das dicas
      */
 	public String[] listaDicasDetalhes() {
-		if (this.dicas.size() == 0) {
+		if (this.dicas.isEmpty()) {
 			return new String[0];
 		}
 		String[] lista = new String[this.dicas.size()];

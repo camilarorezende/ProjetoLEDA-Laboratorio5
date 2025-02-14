@@ -17,7 +17,7 @@ import validators.ValidadorUsuario;
 
 public class UsuarioRepository {
 
-	private Set<Usuario> estudantes;
+	private final Set<Usuario> estudantes;
 	
 	/**
      * Cria um novo repositório de usuários.
@@ -51,7 +51,7 @@ public class UsuarioRepository {
      * @return um array de String contendo a representação de todos os estudantes, se existir
      */
 	public String[] listaEstudantes() {
-		if (this.estudantes.size() == 0) {
+		if (this.estudantes.isEmpty()) {
 			return new String[0];
 		}
 		List<Usuario> listaOrdenadaPeloNome = new ArrayList<>(this.estudantes);
@@ -65,7 +65,7 @@ public class UsuarioRepository {
 	 * @return um array de String contendo a representação dos estudantes, ordenados pela bonificação
 	 */
 	public String[] listaEstudantesRankingDicas() {
-		if (this.estudantes.size() == 0) {
+		if (this.estudantes.isEmpty()) {
 			return new String[0];
 		}
 		List<Usuario> listaOrdenadaPelaBonificacao = new ArrayList<>(this.estudantes);
@@ -85,7 +85,7 @@ public class UsuarioRepository {
 	public Usuario buscaEstudante(String cpf, String senha) {
 		Usuario estudanteProcurado = null;
 
-		for (Usuario u : estudantes) {
+		for (var u : estudantes) {     //Procura o estudante com o cpf pedido
 			if (u.getCpf().equals(cpf)) {
 				estudanteProcurado = u;
 				break;
